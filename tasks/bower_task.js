@@ -44,8 +44,9 @@ module.exports = function(grunt) {
   }
 
   function install(options, callback) {
-    bower.config.cwd = options.cwd;
-    bower.commands.install([], options.bowerOptions)
+    bower.commands.install([], options.bowerOptions, {
+        cwd: options.cwd
+    })
       .on('log', function(result) {
         log(['bower', result.id.cyan, result.message].join(' '));
       })
